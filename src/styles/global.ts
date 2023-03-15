@@ -10,7 +10,7 @@ export const globalStyles = globalCss({
     backgroundColor: "$gray900",
     color: "$gray100",
   },
-  "body, input, textarea, button": {
+  "body, input, textarea, button, h1": {
     fontFamily: "Roboto",
     fontWeight: 400,
   },
