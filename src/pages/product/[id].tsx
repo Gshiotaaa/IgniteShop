@@ -1,3 +1,4 @@
+import { ShoppingBagContext } from "@/context/ShoppingBagContext";
 import { stripe } from "@/lib/stripe";
 import {
   ImageContainer,
@@ -9,7 +10,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Stripe from "stripe";
 
 interface ProductProps {
@@ -26,6 +27,8 @@ interface ProductProps {
 export default function Product({ product }: ProductProps) {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
+  const { handleAddNewProductInBag } = useContext(ShoppingBagContext);
+
   async function handleBuyProduct() {
     try {
       setIsCheckingOut(true);
@@ -41,6 +44,8 @@ export default function Product({ product }: ProductProps) {
       alert("Falha em redirecionar ao checkout");
       setIsCheckingOut(false);
     }
+
+    handleAddNewProductInBag(product);
   }
 
   const { isFallback } = useRouter();

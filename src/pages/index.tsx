@@ -5,10 +5,12 @@ import { useKeenSlider } from "keen-slider/react";
 import Head from "next/head";
 import Image from "next/image";
 
+import { ShoppingBagContext } from "@/context/ShoppingBagContext";
 import { stripe } from "@/lib/stripe";
 import "keen-slider/keen-slider.min.css";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import { useContext } from "react";
 import Stripe from "stripe";
 
 interface HomeProps {
@@ -27,6 +29,10 @@ export default function Home({ products }: HomeProps) {
       spacing: 48,
     },
   });
+
+  const { newProduct } = useContext(ShoppingBagContext);
+
+  console.log(newProduct);
 
   return (
     <>
