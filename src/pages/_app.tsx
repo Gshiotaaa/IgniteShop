@@ -1,7 +1,5 @@
 import { globalStyles } from "@/styles/global";
 import {
-  CompleteInfos,
-  CompletePurchase,
   Container,
   Header,
   ProductsContainer,
@@ -16,11 +14,13 @@ import Image from "next/image";
 
 import logoImg from "./assets/logo.svg";
 
+import { FinishPurchase } from "@/components/FinishPurchase";
 import { ProductDetails } from "@/components/ProductDetails";
 import {
   ShoppingBagContext,
   ShoppingBagProvider,
 } from "@/context/ShoppingBagContext";
+import Link from "next/link";
 import { useContext, useState } from "react";
 
 globalStyles();
@@ -36,7 +36,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <ShoppingBagProvider>
       <Container>
         <Header>
-          <Image src={logoImg} alt="" />
+          <Link href={"/"}>
+            <Image src={logoImg} alt="" />
+          </Link>
           <ShoppingBagMenu>
             <button onClick={() => setOpenShoppingBag(true)}>
               <Tote size={30} color="white" />
@@ -53,17 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <h1>Sacola de compras</h1>
               <ProductDetails />
             </ProductsContainer>
-            <CompletePurchase>
-              <CompleteInfos>
-                <span>Quantidade</span>
-                <span>3 itens</span>
-              </CompleteInfos>
-              <CompleteInfos>
-                <span>Valor total</span>
-                <span>R$ 270,00</span>
-              </CompleteInfos>
-              <button>Finalizar Compra</button>
-            </CompletePurchase>
+            <FinishPurchase />
           </ShoppingBag>
         )}
         <Component {...pageProps} />

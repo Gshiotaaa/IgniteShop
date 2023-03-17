@@ -5,7 +5,6 @@ import {
   ProductContainer,
   ProductDetails,
 } from "@/styles/pages/product";
-import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -30,7 +29,7 @@ export default function Product({ product }: ProductProps) {
   const { handleAddNewProductInBag } = useContext(ShoppingBagContext);
 
   async function handleBuyProduct() {
-    try {
+    /* try {
       setIsCheckingOut(true);
 
       const response = await axios.post("/api/checkout", {
@@ -43,7 +42,7 @@ export default function Product({ product }: ProductProps) {
     } catch (er) {
       alert("Falha em redirecionar ao checkout");
       setIsCheckingOut(false);
-    }
+    }*/
 
     handleAddNewProductInBag(product);
   }

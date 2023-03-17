@@ -31,6 +31,23 @@ export function ShoppingBagProvider({ children }: ShoppingBagProviderProps) {
   const [newProduct, setNewProduct] = useState<NewProduct[]>([]);
 
   function handleAddNewProductInBag(product1: NewProduct) {
+    /*const productAlreadyInBag = newProduct.filter(
+      (product) => product.id === product1.id
+    );
+
+    if (productAlreadyInBag) {
+      setNewProduct((prevState) =>
+        prevState.map((prevProduct) => {
+          if (prevProduct.id === product1.id) {
+            return {
+              ...prevProduct,
+              
+            }
+          }
+        })
+      );
+    }*/
+
     setNewProduct((prevState) => [...prevState, product1]);
   }
 
