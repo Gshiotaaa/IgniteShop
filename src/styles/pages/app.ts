@@ -20,6 +20,7 @@ export const Header = styled("header", {
 export const ShoppingBagMenu = styled("div", {
   backgroundColor: "$gray800",
   borderRadius: "12px",
+  position: "relative",
 
   button: {
     padding: "12px",
@@ -30,7 +31,7 @@ export const ShoppingBagMenu = styled("div", {
 
   span: {
     position: "absolute",
-    top: "85px",
+    top: "0",
     color: "white",
     padding: "2px 5px",
 

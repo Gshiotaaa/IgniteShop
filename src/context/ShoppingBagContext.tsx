@@ -14,6 +14,7 @@ interface ShoppingBagContext {
   newProduct: NewProduct[];
   setNewProduct: Dispatch<SetStateAction<NewProduct[]>>;
   handleAddNewProductInBag: (product: NewProduct) => void;
+  handleRemoveProductOfBag: (id: string) => void;
 }
 
 interface NewProduct {
@@ -51,9 +52,20 @@ export function ShoppingBagProvider({ children }: ShoppingBagProviderProps) {
     setNewProduct((prevState) => [...prevState, product1]);
   }
 
+  function handleRemoveProductOfBag(id: string) {
+    const productsNotRemoved = newProduct.filter((product) => product.id != id);
+
+    setNewProduct(productsNotRemoved);
+  }
+
   return (
     <ShoppingBagContext.Provider
-      value={{ newProduct, setNewProduct, handleAddNewProductInBag }}
+      value={{
+        newProduct,
+        setNewProduct,
+        handleAddNewProductInBag,
+        handleRemoveProductOfBag,
+      }}
     >
       {children}
     </ShoppingBagContext.Provider>
